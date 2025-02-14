@@ -18,7 +18,7 @@ npm start
 ## Usage
 
 ```bash
-Ask me anything:
+Ask me anything: YOUR QUESTION HERE
 ```
 
 Type your query into the command line:
