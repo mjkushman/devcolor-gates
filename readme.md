@@ -4,7 +4,7 @@
 
 Create a .env file and add your secret key from OpenAI.
 
-```
+```node
 OPENAI_API_KEY=REPLACE-WITH-YOUR-SECRET-KEY
 ```
 
@@ -17,7 +17,7 @@ npm start
 
 ## Usage
 
-```node
+```bash
 Ask me anything:
 ```
 
