@@ -1,0 +1,25 @@
+{
+  "name": "devcolorsimplerag",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node ./src/index.ts",
+    "start": "node --disable-warning DEP0040 ./dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/node": "^22.13.4",
+    "dotenv": "^16.4.7",
+    "fuse.js": "^7.1.0",
+    "openai": "^4.85.0",
+    "readline-sync": "^1.4.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "overrides": {
+    "psl": "npm:@imput/psl@2.0.4"
+  }
+}
