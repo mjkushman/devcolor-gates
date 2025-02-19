@@ -4,8 +4,6 @@ import OpenAI from "openai";
 import corpus from "./corpus.json";
 import Fuse, { FuseResult } from "fuse.js";
 
-// process.exit()
-
 // Initialize OpenAI with API Key
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -65,11 +63,17 @@ async function chat() {
   rl.prompt();
 
   rl.on("line", async (input) => {
-    if (input.toLowerCase() === "exit") process.exit(0);
-    console.log("Thinking..."); // optional message
+    let message = input.toLowerCase().trim()
+    if (message == "exit") rl.emit('close')
+      
+    console.log("Let me think..."); // optional message
     const response = await generateResponse(input);
     console.log(response);
-    rl.prompt();
+
+    rl.prompt(); // re-prompts the user
+  }).on("close", () => {
+    console.log("Thanks for the chat. Let's do it again soon!");
+    process.exit(0);
   });
 }
 
