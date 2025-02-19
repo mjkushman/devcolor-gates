@@ -32,9 +32,9 @@ async function generateResponse(query: string): Promise<string> {
 
   // If there is relevant context, add it to the prompt
   if (context.length > 0) {
-    let contextString = `Use these question + answer pairs to help generate a response: \n\n`;
+    let contextString = `Use these question + answer pairs to help generate a response:`;
     for (let item of context) {
-      contextString += `Q: ${item.item.question} \n A: ${item.item.answer} \n\n`;
+      contextString += `\nQ: ${item.item.question} \nA: ${item.item.answer} \n`;
     }
     messages.push({ role: "system", content: contextString });
   }
@@ -47,7 +47,7 @@ async function generateResponse(query: string): Promise<string> {
     messages: [...messages],
   });
   return (
-    response.choices[0]?.message?.content || "Error: No response generated."
+    response.choices[0]?.message?.content || "Something went wrong. Try again"
   );
 }
 
@@ -59,16 +59,22 @@ const rl = readline.createInterface({
 
 // Chat
 async function chat() {
-  console.log("Type 'exit' any time to quit.", "\n");
+  console.log("Type 'exit' any time to quit.");
   rl.prompt();
 
   rl.on("line", async (input) => {
-    let message = input.toLowerCase().trim()
-    if (message == "exit") rl.emit('close')
-      
+    let message = input.toLowerCase().trim();
+    if (message == "exit") rl.emit("close");
+
     console.log("Let me think..."); // optional message
-    const response = await generateResponse(input);
-    console.log(response);
+    try {
+      const response = await generateResponse(input);
+      console.log(response);
+    } catch (error) {
+      console.log(
+        "I wasn't able to generate a response. Can you try asking again?"
+      );
+    }
 
     rl.prompt(); // re-prompts the user
   }).on("close", () => {
