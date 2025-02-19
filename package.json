@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node ./src/index.ts",
+    "build": "tsc",
     "start": "node --disable-warning DEP0040 ./dist/index.js"
   },
   "author": "",

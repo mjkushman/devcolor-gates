@@ -10,10 +10,11 @@ Create a .env file and add your secret key from OpenAI.
 OPENAI_API_KEY=REPLACE-WITH-YOUR-SECRET-KEY
 ```
 
-Install and start the application:
+Install, build, and start the application:
 
 ```bash
 npm install
+npm run build
 npm start
 ```
 
@@ -36,8 +37,7 @@ Two steps are taken:
 Bot output:
 >/dev/color can help you develop your career by providing a supportive community focused on advancing Black technologists. It offers mentorship, career guidance, and professional development through workshops and events. Partnering with companies and organizations in the tech industry, /dev/color facilitates networking opportunities that can connect you with potential employers and mentors, potentially opening new career paths and opportunities.
 
-
 ### Future Enhancements
 
 * Chat message history
-    * The bot does not maintain a chat history so if no context is found in the RAG search, it will struggle following a specific topic.
+  * The bot does not maintain a chat history so if no context is found in the RAG search, it will struggle following a specific topic.
